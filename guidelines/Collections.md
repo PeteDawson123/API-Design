@@ -34,18 +34,26 @@ Summary objects are most comment when nesting one aggregate root inside another 
 
 ## Pagination
 
-RESTful APIs that return collections MAY return partial sets. Consumers of these services MUST expect partial result sets and correctly page through to retrieve an entire set.
+RESTful APIs that return collections SHOULD return partial sets, to allow for a better experience to clients and to avoid performance issues. Consumers of these services MUST expect partial result sets and correctly page through to retrieve an entire set.
 
 There are two forms of pagination that MAY be supported by RESTful APIs. Server-driven paging mitigates against denial-of-service attacks by forcibly paginating a request over multiple response payloads. Client-driven paging enables clients to request only the number of resources that it can use at a given time.
 
-Sorting and Filtering parameters MUST be consistent across pages, because both client- and server-side paging is fully compatible with both filtering and sorting.
+Sorting and filtering parameters MUST be preserved across pages.
 
+A sample minimal response will look like:
+```json
     {
-    "value": [...],
-    "@nextLink": "{opaqueUrl}"
+    "items": [/*...*/],
+    "next": "{opaqueUrl}",
     }
+```
 
-Paginated collections SHOULD return a `@nextLink` property in the response that indicates the next page of results.
+Paginated collections properties:
+
+- MUST have a `next` property in the response that indicates the next page of results. If the property is missing, this is the last page.
+- SHOULD have a `prev` property with a link to the previous page. If a API response define such property, when missing it indicates it is the first page.
+- COULD have the `first`, `last` and `self` properties pointing to the first, last and current page of the resultset.
+- COULD have a `query` property containing an object defining the query and sorting used.
 
 ### Supporting Client-Driven paging
 
