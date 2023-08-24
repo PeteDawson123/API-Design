@@ -4,11 +4,12 @@ When uploading to the developer portals, the titles of our APIs should adhere to
 
 A good title has:
 - A user-friendly format (e.g.'Customer API')
-- Alphabetic characters only (i.e. a-z A-Z allowed)
+- Alphabetic characters only (i.e. a-z A-Z () allowed)
 - Capitalized initial letter
 - Spaces between words
-- API (not 'api')
+
 
 Titles must not contain:
 - NewDay or partner names
 - Version numbers
+- API or api
