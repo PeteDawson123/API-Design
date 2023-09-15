@@ -20,7 +20,9 @@ If you include the type in the variable name it must represent the underlaying t
 **You MUST keep URLs verb free** (e.g. /accounts/123/getcards is incorrect, a HTTP GET to /account/123/cards is correct)
 
 **You SHOULD use pluralised entity names in URLs** (e.g. /people/1 instead of /person/1)
+
 **You SHOULD NOT use version numbers in URLs (e.g. /transactions instead of /v1/transactions)
+
 ## Casing
 
 ### Path values must be lowercase, and hypenated
